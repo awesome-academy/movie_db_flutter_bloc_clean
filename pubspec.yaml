@@ -9,16 +9,17 @@ environment:
   sdk: '>=2.18.6 <3.0.0'
 
 dependencies:
-  flutter:
-    sdk: flutter
+  dio: ^4.0.6
+  equatable: ^2.0.5
   ez_cache:
     path: ./core/ez_cache
-
-dev_dependencies:
-  flutter_test:
+  flutter:
     sdk: flutter
 
+dev_dependencies:
   flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
 
 flutter:
 
