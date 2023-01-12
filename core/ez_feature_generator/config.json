@@ -1,0 +1,13 @@
+{
+    "name": "setting",
+    "method": [
+        "get"
+    ],
+    "local_method": [
+        "check_favorite",
+        "remove_favorite",
+        "add_favorite"
+    ],
+    "services": "github",
+    "project": "github_connect"
+}
