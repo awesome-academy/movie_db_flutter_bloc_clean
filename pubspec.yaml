@@ -13,14 +13,57 @@ dependencies:
   equatable: ^2.0.5
   ez_cache:
     path: ./core/ez_cache
+  flutter_native_splash: ^2.2.16
   flutter:
     sdk: flutter
 
 dev_dependencies:
+  flutter_flavorizr: ^2.1.5
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
 
 flutter:
-
   uses-material-design: true
+
+flavorizr:
+  flavors:
+    dev:
+      app:
+        icon: "assets/images/splash.jpg"
+        name: "MovieDB DEV"
+
+      android:
+        applicationId: "com.movie.db.dev"
+
+      ios:
+        bundleId: "com.movie.db.dev"
+
+    prod:
+      app:
+        icon: "assets/images/splash.jpg"
+        name: "MovieDB"
+
+      android:
+        applicationId: "com.movie.db"
+
+      ios:
+        bundleId: "com.movie.db"
+
+    stag:
+      app:
+        icon: "assets/images/splash.jpg"
+        name: "MovieDB staging"
+
+      android:
+        applicationId: "com.movie.db.stag"
+
+      ios:
+        bundleId: "com.movie.db.stag"
+
+
+flutter_native_splash:
+  color: "#000000"
+  image: assets/images/splash.jpg
+  ios: true
+  android: true
