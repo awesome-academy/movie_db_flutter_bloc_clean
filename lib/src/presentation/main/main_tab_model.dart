@@ -1,7 +1,13 @@
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:movie_db_flutter_bloc_clean/src/core/utils/gen/colors.gen.dart';
+
+// Project imports:
+import '/src/core/utils/gen/colors.gen.dart';
+import '/src/presentation/home/view/home_page.dart';
 
 class TabModel {
   TabModel({
@@ -29,14 +35,7 @@ List<TabModel> mainTabs(BuildContext context) => <TabModel>[
     ];
 
 List<Widget> mainViews(BuildContext context) => <Widget>[
-      Scaffold(
-        body: Center(
-          child: Text(
-            AppLocalizations.of(context).home,
-            style: const TextStyle(color: ColorName.tabbarTextColorEnable),
-          ),
-        ),
-      ),
+      const HomePage(),
       Scaffold(
         body: Center(
           child: Text(

@@ -1,13 +1,7 @@
 {
-    "name": "setting",
-    "method": [
-        "get"
-    ],
-    "local_method": [
-        "check_favorite",
-        "remove_favorite",
-        "add_favorite"
-    ],
-    "services": "github",
-    "project": "github_connect"
+  "name": "home",
+  "method": ["get"],
+  "local_method": ["check_favorite", "remove_favorite", "add_favorite"],
+  "services": "the_movie_db",
+  "project": "movie_db_flutter_bloc_clean"
 }

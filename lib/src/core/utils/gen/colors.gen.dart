@@ -7,8 +7,9 @@
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
 
-import 'package:flutter/painting.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
 class ColorName {
   ColorName._();

@@ -1,7 +1,11 @@
 class EndPoints {
   EndPoints._();
 
-  static const String githubUrl = 'https://api.github.com';
+  static const String theMoviebUrl = 'https://api.themoviedb.org/3';
 
-  static const String setting = '/setting';
+  static const String upcoming = '/movie/upcoming';
+
+  static const String topRated = '/movie/top_rated';
+
+  static const String popular = '/movie/popular';
 }
