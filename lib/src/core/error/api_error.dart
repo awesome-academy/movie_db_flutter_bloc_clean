@@ -1,5 +1,7 @@
+// Package imports:
 import 'package:equatable/equatable.dart';
 
+// Project imports:
 import 'error_codes.dart';
 
 class ApiError extends Equatable {

@@ -1,5 +1,5 @@
 class CacheKey {
   CacheKey._();
 
-  static String profile = 'profile';
+  static String language = 'language';
 }

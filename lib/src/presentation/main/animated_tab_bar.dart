@@ -1,7 +1,9 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:movie_db_flutter_bloc_clean/src/core/utils/extensions/dimension.dart';
-import 'package:movie_db_flutter_bloc_clean/src/core/utils/gen/colors.gen.dart';
 
+// Project imports:
+import '/src/core/utils/extensions/dimension.dart';
+import '/src/core/utils/gen/colors.gen.dart';
 import 'main_tab_model.dart';
 
 class AnimatedTabBar extends StatefulWidget {

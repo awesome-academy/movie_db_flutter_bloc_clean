@@ -7,9 +7,12 @@
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
 
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+// Flutter imports:
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
+
+// Package imports:
+import 'package:flutter_svg/flutter_svg.dart';
 
 class $AssetsColorsGen {
   const $AssetsColorsGen();
