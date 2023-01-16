@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#5ED5A8</color>
+    <color name="tabbar_color">#1B232A</color>
+    <color name="tabbar_text_color_enable">#C1C7CD</color>
+    <color name="tabbar_text_color_disable">#777777</color>
+</resources>

@@ -1,6 +1,9 @@
 import 'package:ez_cache/ez_cache.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:movie_db_flutter_bloc_clean/src/data/datasources/local/app_cache.dart';
+import 'package:movie_db_flutter_bloc_clean/src/presentation/main/main_page.dart';
 
 import 'flavors.dart';
 
@@ -13,7 +16,6 @@ class MyApp {
     required bool isDebug,
     required Environment environment,
   }) async {
-    // TODO: config injectable by environment
     await AppCache.instance.init(HiveCache());
     runApp(const App());
   }
@@ -27,20 +29,20 @@ class App extends StatelessWidget {
         title: 'Movie DB',
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          scaffoldBackgroundColor: Colors.black,
         ),
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('en'), // English
+          Locale('vi'), // Vietnamese
+        ],
+        locale: const Locale('en'),
         debugShowCheckedModeBanner: false,
-        home: const MyHomePage(),
-      );
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) => const Scaffold(
-        backgroundColor: Colors.white,
-        body: Center(
-          child: Text('Movie DB Flutter Bloc + Clean Architecture'),
-        ),
+        home: const MainPgae(),
       );
 }
