@@ -30,6 +30,10 @@ import 'package:movie_db_flutter_bloc_clean/src/domain/use_cases/home_use_cases/
     as _i6;
 import 'package:movie_db_flutter_bloc_clean/src/presentation/home/bloc/home_bloc.dart'
     as _i12;
+import 'package:movie_db_flutter_bloc_clean/src/presentation/popular/bloc/popular_bloc.dart'
+    as _i13;
+import 'package:movie_db_flutter_bloc_clean/src/presentation/upcoming/bloc/upcoming_bloc.dart'
+    as _i14;
 
 /// ignore_for_file: unnecessary_lambdas
 /// ignore_for_file: lines_longer_than_80_chars
@@ -64,6 +68,18 @@ _i1.GetIt $initGetIt(
         gh<_i11.GetUpcomingUseCase>(),
         gh<_i10.GetTopRatedUseCase>(),
         gh<_i9.GetPopularUseCase>(),
+        gh<_i8.CheckFavoriteHomeUseCase>(),
+        gh<_i6.RemoveFavoriteHomeUseCase>(),
+        gh<_i7.AddFavoriteHomeUseCase>(),
+      ));
+  gh.factory<_i13.PopularBloc>(() => _i13.PopularBloc.from(
+        gh<_i10.GetTopRatedUseCase>(),
+        gh<_i8.CheckFavoriteHomeUseCase>(),
+        gh<_i6.RemoveFavoriteHomeUseCase>(),
+        gh<_i7.AddFavoriteHomeUseCase>(),
+      ));
+  gh.factory<_i14.UpcomingBloc>(() => _i14.UpcomingBloc.from(
+        gh<_i11.GetUpcomingUseCase>(),
         gh<_i8.CheckFavoriteHomeUseCase>(),
         gh<_i6.RemoveFavoriteHomeUseCase>(),
         gh<_i7.AddFavoriteHomeUseCase>(),

@@ -1,8 +1,9 @@
 {
     "home": "Chính",
     "popular": "Phổ biến",
-    "coming": "Sắp",
+    "coming": "Sắp chiếu",
     "favorite": "Thích",
     "appName": "FILMAX",
-    "topRated": "Top Đánh Giá cao"
+    "topRated": "Top Đánh Giá cao",
+    "noMoreData": "Không còn dữ liệu"
 }

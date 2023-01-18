@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import '/src/core/utils/gen/assets.gen.dart';
 import '/src/core/utils/gen/colors.gen.dart';
 
-class HomeAppBar extends StatelessWidget {
-  HomeAppBar({super.key});
+class BaseAppBar extends StatelessWidget {
+  BaseAppBar({required this.title, super.key});
+
+  final String title;
 
   final LinearGradient appBarLinear = LinearGradient(
     colors: [
@@ -42,7 +44,7 @@ class HomeAppBar extends StatelessWidget {
                 ),
                 const SizedBox(width: 10),
                 Text(
-                  'FILMAX',
+                  title,
                   style: TextStyle(color: Colors.white, fontSize: logoTextSize),
                 )
               ],

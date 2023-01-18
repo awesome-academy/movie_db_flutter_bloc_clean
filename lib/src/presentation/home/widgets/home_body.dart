@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // Project imports:
-import '../bloc/home_bloc.dart';
+import '/src/presentation/home/bloc/home_bloc.dart';
 import '/src/presentation/home/widgets/show_list_movie_horizontal.dart';
 import '/src/presentation/home/widgets/upcoming_image.dart';
-import 'home_app_bar.dart';
+import '/src/presentation/widgets/base_app_bar.dart';
 import 'upcoming_text.dart';
 
 class HomeBody extends StatefulWidget {
@@ -40,7 +40,7 @@ class _HomeBodyState extends State<HomeBody> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            HomeAppBar(),
+            BaseAppBar(title: AppLocalizations.of(context).appName),
             UpcomingImage(
               pageOffset: pageOffset,
               pageController: pageController,
@@ -67,12 +67,12 @@ class _HomeBodyState extends State<HomeBody> {
         itemCountLoading: 2,
         title: AppLocalizations.of(context).topRated,
         buildWhen: (previous, current) =>
-            current.topRatedStatus == UpcomingStatus.success ||
-            current.topRatedStatus == UpcomingStatus.loading,
+            current.topRatedStatus == NetworkDataStatus.success ||
+            current.topRatedStatus == NetworkDataStatus.loading,
         buildLoadingWhen: (state) =>
-            state.topRatedStatus == UpcomingStatus.loading,
+            state.topRatedStatus == NetworkDataStatus.loading,
         buildSuccesWhen: (state) =>
-            state.topRatedStatus == UpcomingStatus.success,
+            state.topRatedStatus == NetworkDataStatus.success,
         dataBuildSuccessWhen: (state) => state.topRatedData ?? [],
       );
 
@@ -80,12 +80,12 @@ class _HomeBodyState extends State<HomeBody> {
         itemCountLoading: 2,
         title: AppLocalizations.of(context).popular,
         buildWhen: (previous, current) =>
-            current.popularStatus == UpcomingStatus.success ||
-            current.popularStatus == UpcomingStatus.loading,
+            current.popularStatus == NetworkDataStatus.success ||
+            current.popularStatus == NetworkDataStatus.loading,
         buildLoadingWhen: (state) =>
-            state.popularStatus == UpcomingStatus.loading,
+            state.popularStatus == NetworkDataStatus.loading,
         buildSuccesWhen: (state) =>
-            state.popularStatus == UpcomingStatus.success,
+            state.popularStatus == NetworkDataStatus.success,
         dataBuildSuccessWhen: (state) => state.popularData ?? [],
       );
 }

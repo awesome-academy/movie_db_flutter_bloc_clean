@@ -2,6 +2,8 @@
 import 'package:injectable/injectable.dart';
 
 // Project imports:
+import '../entities/home_response/get_home_response_model.dart';
+import '../entities/home_response/get_movie_reponse_model.dart';
 import '/src/core/request/home_request/get_home_request.dart';
 import '/src/core/resource/data_source.dart';
 import '/src/data/datasources/local/app_cache.dart';
@@ -15,15 +17,15 @@ abstract class HomeRepository {
   static HomeRepository create(TheMovieDbService services, AppCache appcache) =>
       HomeRepositoryImpl(services, appcache);
 
-  Future<DataState<List<MovieModel>?>> getUpcoming(
+  Future<DataState<GetUpComingResponseModel?>> getUpcoming(
     GetMovieRequest params,
   );
 
-  Future<DataState<List<MovieModel>?>> getTopRated(
+  Future<DataState<GetMovieReponseModel?>> getTopRated(
     GetMovieRequest params,
   );
 
-  Future<DataState<List<MovieModel>?>> getPopular(
+  Future<DataState<GetMovieReponseModel?>> getPopular(
     GetMovieRequest params,
   );
 
