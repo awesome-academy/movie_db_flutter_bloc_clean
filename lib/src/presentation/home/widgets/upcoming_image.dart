@@ -31,11 +31,11 @@ class UpcomingImage extends StatelessWidget {
         height: Dimensions.screenHeight(context) * .6,
         child: BlocBuilder<HomeBloc, HomeState>(
           buildWhen: (previous, current) =>
-              current.upcomingStatus == UpcomingStatus.success ||
-              current.upcomingStatus == UpcomingStatus.loading,
+              current.upcomingStatus == NetworkDataStatus.success ||
+              current.upcomingStatus == NetworkDataStatus.loading,
           builder: (context, state) {
             final _list = state.upcomingData ?? [];
-            if (state.upcomingStatus == UpcomingStatus.loading) {
+            if (state.upcomingStatus == NetworkDataStatus.loading) {
               return buildShimmerUpcomingImage(context);
             }
             return PageView.builder(

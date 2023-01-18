@@ -26,10 +26,10 @@ class UpcomingText extends StatelessWidget {
   @override
   Widget build(BuildContext context) => BlocBuilder<HomeBloc, HomeState>(
       buildWhen: (previous, current) =>
-          current.upcomingStatus == UpcomingStatus.success ||
-          current.upcomingStatus == UpcomingStatus.loading,
+          current.upcomingStatus == NetworkDataStatus.success ||
+          current.upcomingStatus == NetworkDataStatus.loading,
       builder: (context, state) {
-        if (state.upcomingStatus == UpcomingStatus.loading) {
+        if (state.upcomingStatus == NetworkDataStatus.loading) {
           return buildShimmerUpcomingText(context);
         }
         final _list = state.upcomingData ?? [];

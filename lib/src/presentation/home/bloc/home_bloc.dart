@@ -7,11 +7,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 // Project imports:
-import 'package:movie_db_flutter_bloc_clean/src/presentation/blocs/app_setting/app_setting_bloc.dart';
 import '/src/core/api_key.dart';
 import '/src/core/error/api_error.dart';
 import '/src/core/request/home_request/get_home_request.dart';
 import '/src/core/resource/data_source.dart';
+import '/src/domain/entities/home_response/get_home_response_model.dart';
+import '/src/domain/entities/home_response/get_movie_reponse_model.dart';
 import '/src/domain/entities/home_response/movie_model.dart';
 import '/src/domain/use_cases/get_popular_use_case.dart';
 import '/src/domain/use_cases/get_top_rated_use_case.dart';
@@ -19,6 +20,7 @@ import '/src/domain/use_cases/get_upcoming_use_case.dart';
 import '/src/domain/use_cases/home_use_cases/add_favorite_home_use_case.dart';
 import '/src/domain/use_cases/home_use_cases/check_favorite_home_use_case.dart';
 import '/src/domain/use_cases/home_use_cases/remove_favorite_home_use_case.dart';
+import '/src/presentation/blocs/app_setting/app_setting_bloc.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
@@ -70,15 +72,25 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   Future<void> started(
     HomeStarted event,
     Emitter<HomeState> emit,
-  ) async {}
+  ) async {
+    emit(state.copyWith(
+      upcomingStatus: NetworkDataStatus.initial,
+      upcomingData: null,
+      topRatedStatus: NetworkDataStatus.initial,
+      topRatedData: null,
+      popularStatus: NetworkDataStatus.initial,
+      popularData: null,
+      apiError: null,
+    ));
+  }
 
   Future<void> getUpcomming(
     HomeGetUpcoming event,
     Emitter<HomeState> emit,
   ) async {
-    emit(state.copyWith(upcomingStatus: UpcomingStatus.loading));
+    emit(state.copyWith(upcomingStatus: NetworkDataStatus.loading));
 
-    final DataState<List<MovieModel>?> dataState =
+    final DataState<GetUpComingResponseModel?> dataState =
         await _getUpcomingUseCase.call(
       params: GetMovieRequest(
           apiKey, 1, event.language == Language.vi ? 'vi-VN' : 'en-US'),
@@ -86,14 +98,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
     if (dataState is DataSuccess && dataState.data != null) {
       emit(state.copyWith(
-        upcomingStatus: UpcomingStatus.success,
-        upcomingData: dataState.data,
+        upcomingStatus: NetworkDataStatus.success,
+        upcomingData: dataState.data?.results,
       ));
     }
 
     if (dataState is DataFailed) {
       emit(state.copyWith(
-        upcomingStatus: UpcomingStatus.failure,
+        upcomingStatus: NetworkDataStatus.failure,
         apiError: dataState.error,
       ));
     }
@@ -103,8 +115,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     HomeGetTopRated event,
     Emitter<HomeState> emit,
   ) async {
-    emit(state.copyWith(topRatedStatus: UpcomingStatus.loading));
-    final DataState<List<MovieModel>?> dataState =
+    emit(state.copyWith(topRatedStatus: NetworkDataStatus.loading));
+    final DataState<GetMovieReponseModel?> dataState =
         await _getTopRatedUseCase.call(
       params: GetMovieRequest(
           apiKey, 1, event.language == Language.vi ? 'vi-VN' : 'en-US'),
@@ -112,14 +124,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
     if (dataState is DataSuccess && dataState.data != null) {
       emit(state.copyWith(
-        topRatedStatus: UpcomingStatus.success,
-        topRatedData: dataState.data,
+        topRatedStatus: NetworkDataStatus.success,
+        topRatedData: dataState.data?.results,
       ));
     }
 
     if (dataState is DataFailed) {
       emit(state.copyWith(
-        topRatedStatus: UpcomingStatus.failure,
+        topRatedStatus: NetworkDataStatus.failure,
         apiError: dataState.error,
       ));
     }
@@ -129,8 +141,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     HomeGetPopular event,
     Emitter<HomeState> emit,
   ) async {
-    emit(state.copyWith(popularStatus: UpcomingStatus.loading));
-    final DataState<List<MovieModel>?> dataState =
+    emit(state.copyWith(popularStatus: NetworkDataStatus.loading));
+    final DataState<GetMovieReponseModel?> dataState =
         await _getPopularUseCase.call(
       params: GetMovieRequest(
           apiKey, 1, event.language == Language.vi ? 'vi-VN' : 'en-US'),
@@ -138,14 +150,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
     if (dataState is DataSuccess && dataState.data != null) {
       emit(state.copyWith(
-        popularStatus: UpcomingStatus.success,
-        popularData: dataState.data,
+        popularStatus: NetworkDataStatus.success,
+        popularData: dataState.data?.results,
       ));
     }
 
     if (dataState is DataFailed) {
       emit(state.copyWith(
-        popularStatus: UpcomingStatus.failure,
+        popularStatus: NetworkDataStatus.failure,
         apiError: dataState.error,
       ));
     }

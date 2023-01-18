@@ -22,7 +22,7 @@ class HomeRepositoryImpl implements HomeRepository {
   final AppCache _appCache;
 
   @override
-  Future<DataState<List<MovieModel>?>> getUpcoming(
+  Future<DataState<GetUpComingResponseModel?>> getUpcoming(
     GetMovieRequest params,
   ) async {
     try {
@@ -31,7 +31,7 @@ class HomeRepositoryImpl implements HomeRepository {
 
       if (httpResponse.response.statusCode == HttpStatus.ok) {
         return DataSuccess(
-          httpResponse.data.results,
+          httpResponse.data,
         );
       }
 
@@ -44,7 +44,7 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<DataState<List<MovieModel>?>> getPopular(
+  Future<DataState<GetMovieReponseModel?>> getPopular(
     GetMovieRequest params,
   ) async {
     try {
@@ -53,7 +53,7 @@ class HomeRepositoryImpl implements HomeRepository {
 
       if (httpResponse.response.statusCode == HttpStatus.ok) {
         return DataSuccess(
-          httpResponse.data.results,
+          httpResponse.data,
         );
       }
 
@@ -66,7 +66,7 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<DataState<List<MovieModel>?>> getTopRated(
+  Future<DataState<GetMovieReponseModel?>> getTopRated(
     GetMovieRequest params,
   ) async {
     try {
@@ -75,7 +75,7 @@ class HomeRepositoryImpl implements HomeRepository {
 
       if (httpResponse.response.statusCode == HttpStatus.ok) {
         return DataSuccess(
-          httpResponse.data.results,
+          httpResponse.data,
         );
       }
 

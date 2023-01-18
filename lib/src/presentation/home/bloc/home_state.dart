@@ -1,26 +1,26 @@
 part of 'home_bloc.dart';
 
-enum UpcomingStatus { initial, loading, success, failure }
+enum NetworkDataStatus { initial, loading, success, failure }
 
 @immutable
 class HomeState extends Equatable {
   const HomeState({
-    this.upcomingStatus = UpcomingStatus.initial,
+    this.upcomingStatus = NetworkDataStatus.initial,
     this.upcomingData,
-    this.topRatedStatus = UpcomingStatus.initial,
+    this.topRatedStatus = NetworkDataStatus.initial,
     this.topRatedData,
-    this.popularStatus = UpcomingStatus.initial,
+    this.popularStatus = NetworkDataStatus.initial,
     this.popularData,
     this.apiError,
   });
 
-  final UpcomingStatus upcomingStatus;
+  final NetworkDataStatus upcomingStatus;
   final List<MovieModel>? upcomingData;
 
-  final UpcomingStatus topRatedStatus;
+  final NetworkDataStatus topRatedStatus;
   final List<MovieModel>? topRatedData;
 
-  final UpcomingStatus popularStatus;
+  final NetworkDataStatus popularStatus;
   final List<MovieModel>? popularData;
 
   final ApiError? apiError;
@@ -37,11 +37,11 @@ class HomeState extends Equatable {
       ];
 
   HomeState copyWith({
-    UpcomingStatus? upcomingStatus,
+    NetworkDataStatus? upcomingStatus,
     List<MovieModel>? upcomingData,
-    UpcomingStatus? topRatedStatus,
+    NetworkDataStatus? topRatedStatus,
     List<MovieModel>? topRatedData,
-    UpcomingStatus? popularStatus,
+    NetworkDataStatus? popularStatus,
     List<MovieModel>? popularData,
     ApiError? apiError,
   }) =>
